@@ -1,15 +1,151 @@
-.main-navigation {
-	clear: both;
-	display: block;
-	float: left;
+.site-header {
+	display: grid;
+	grid-template-columns: 
+		unquote("[")gutter-left-outside unquote("]")
+		1rem 
+		unquote("[")gutter-left-inside unquote("]") 
+		repeat(12, 1fr)
+		unquote("[")gutter-right-inside unquote("]")
+		1rem 
+		unquote("[")gutter-left-outside unquote("]");
+	grid-template-rows:
+		unquote("[")gutter-top-outside unquote("]")
+		1rem 
+		unquote("[")gutter-top-inside unquote("]") 
+		repeat(2, min-content)
+		unquote("[")gutter-bottom-inside unquote("]")
+		1rem 
+		unquote("[")gutter-bottom-outside unquote("]");
+	grid-gap: 1rem;
 	width: 100%;
+}
+.site-branding {
+	grid-column: gutter-left-inside unquote("/") span 2;
+	grid-row: gutter-top-inside unquote("/") span 2;
+	z-index: 100;
+	.custom-logo-link {
+		height: 100%;
+		width: 100%;
+	}
+	.custom-logo {
+		height: 100%;
+    max-width: 100%;
+	}
+}
+.title {
+	grid-column: 4 unquote("/") 12;
+	grid-row: 3;
+	h1 {
+		font-size: 4rem;
+		margin: 0;
+	}
+	p {
+		margin: 0;
+		font-size: 2rem;
+	}
+}
+.hero .site-branding {
+	grid-column: gutter-left-inside unquote("/") span 3;
+	grid-row: gutter-top-inside unquote("/") span 3;
+}
 
+.site-header.hero {
+	height: 100vh;
+	grid-template-rows: 
+		unquote("[")gutter-top-outside unquote("]")
+		1rem 
+		unquote("[")gutter-top-inside unquote("]") 
+		repeat(6, 1fr)
+		unquote("[")gutter-bottom-inside unquote("]")
+		1rem 
+		unquote("[")gutter-bottom-outside unquote("]");
+	background: linear-gradient(to bottom, rgba(255, 244, 220, .9) 0%,rgba(255, 244, 220, 0) 30%,rgba(255, 244, 220, 0) 100%)
+}
+
+.hero .title {
+	grid-column: 3 unquote("/") 12;
+	grid-row: 6;
+	color: #fff;
+}
+
+.post-thumbnail {
+	object-fit: cover;
+	grid-column:  gutter-left-outside unquote("/") gutter-right-outside;
+	grid-row: gutter-top-outside unquote("/") gutter-bottom-outside;
+	z-index: -1;
+}
+.post-thumbnail img {
+	object-fit: cover;
+	height: 100%;
+	width: 100%;
+	filter: sepia(.5);
+}
+.triangle {
+	grid-column: 1 unquote("/") 3;
+	grid-row: 3 unquote("/") gutter-bottom-outside;
+}
+#tri-01.triangle {
+	grid-column: 1 unquote("/") 4;
+	grid-row: 5 unquote("/") gutter-bottom-outside;
+	polygon {
+		fill: rgba($color__accent-two, .7) !important;
+	}
+}
+#tri-02.triangle {
+	grid-column: 3 unquote("/") 8;
+	grid-row: 6 unquote("/") gutter-bottom-outside;
+	polygon {
+		fill: rgba($color__accent-three, .7) !important;
+	}
+}
+#tri-03.triangle {
+	grid-column: 2 unquote("/") 6;
+  grid-row: 4 unquote("/") gutter-bottom-outside;
+	polygon {
+		fill: rgba($color__accent-one, .7) !important;
+	}
+}
+#tri-04.triangle {
+	grid-column: 6 unquote("/") 10;
+	grid-row: 5 unquote("/") gutter-bottom-outside;
+	polygon {
+		fill: rgba($color__accent-four, .7) !important;
+	}
+}
+#tri-05.triangle {
+	grid-column: 7 unquote("/") 14;
+	grid-row: 6 unquote("/") gutter-bottom-outside;
+	polygon {
+		fill: rgba($color__accent-two, .7) !important;
+	}
+}
+#tri-06.triangle {
+	grid-column: 8 unquote("/") 10;
+	grid-row: 4 unquote("/") gutter-bottom-outside;
+	polygon {
+		fill: rgba($color__accent-three, .7) !important;
+	}
+}
+#tri-07.triangle {
+	grid-column: 10 unquote("/") 16;
+	grid-row: 5 unquote("/") gutter-bottom-outside;
+	polygon {
+		fill: rgba($color__accent-four, .7) !important;
+	}
+}
+
+.main-navigation {
+	grid-row: gutter-top-inside;
+	grid-column: 7 unquote("/") gutter-right-inside;
 	ul {
-		display: none;
+		width: 100%;
+		display: grid;
 		list-style: none;
 		margin: 0;
 		padding-left: 0;
-
+		grid-template-columns: repeat(auto-fit, minmax(3rem,max-content));
+		justify-content: end;
+		grid-column-gap: 1rem;
 		ul {
 			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
 			float: left;
@@ -50,9 +186,6 @@
 	}
 
 	li {
-		float: left;
-		position: relative;
-
 		&:hover > a,
 		&.focus > a {
 		}
@@ -61,6 +194,9 @@
 	a {
 		display: block;
 		text-decoration: none;
+		color: #241F16;
+    font-size: 1.4rem;
+    font-weight: bold;
 	}
 
 	.current_page_item > a,
@@ -70,35 +206,17 @@
 	}
 }
 
-/* Small menu. */
-.menu-toggle,
-.main-navigation.toggled ul {
-	display: block;
-}
-
-@media screen and (min-width: 37.5em) {
-	.menu-toggle {
-		display: none;
-	}
-	.main-navigation ul {
-		display: block;
-	}
-}
-
 .comment-navigation,
 .posts-navigation,
 .post-navigation {
-
 	.site-main & {
 		margin: 0 0 1.5em;
 		overflow: hidden;
 	}
-
 	.nav-previous {
 		float: left;
 		width: 50%;
 	}
-
 	.nav-next {
 		float: right;
 		text-align: right;

@@ -24,10 +24,20 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'campfire' ); ?></a>
 
-	<header id="masthead" class="site-header">
+	<header id="masthead" class="site-header <?php if ( has_post_thumbnail() ) { ?>hero <?php }	?>">
 		<div class="site-branding">
 			<?php
-			the_custom_logo();
+			if ( is_front_page() ) :
+				the_custom_logo();
+			elseif (get_theme_mod( 'secondary_logo' )) :
+			?>
+				<a href="http://localhost/" class="custom-logo-link" rel="home" itemprop="url">
+					<img src="<?php echo get_theme_mod( 'secondary_logo' ); ?>" class="custom-logo" />
+				</a>
+			<?php
+			else : 
+				the_custom_logo();
+			endif;
 			if ( is_front_page() && is_home() ) :
 				?>
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
@@ -45,7 +55,6 @@
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'campfire' ); ?></button>
 			<?php
 			wp_nav_menu( array(
 				'theme_location' => 'menu-1',
@@ -53,6 +62,46 @@
 			) );
 			?>
 		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
-
-	<div id="content" class="site-content">
+		<?php if ( has_post_thumbnail() ) { ?>
+			<?php campfire_post_thumbnail(); ?>
+			<div id="tri-01" class="triangle">
+				<svg width="100%" height="100%" viewBox="0 0 200 200" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" >
+					<polygon id="triangle" points="100,0 0,200 200,200" style="fill:#000;"/>
+				</svg>
+			</div>
+			<div id="tri-02" class="triangle">
+				<svg width="100%" height="100%" viewBox="0 0 200 200" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" >
+					<polygon id="triangle" points="100,0 0,200 200,200" style="fill:#000;"/>
+				</svg>
+			</div>
+			<div id="tri-03" class="triangle">
+				<svg width="100%" height="100%" viewBox="0 0 200 200" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" >
+					<polygon id="triangle" points="100,0 0,200 200,200" style="fill:#000;"/>
+				</svg>
+			</div>
+			<div id="tri-04" class="triangle">
+				<svg width="100%" height="100%" viewBox="0 0 200 200" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" >
+					<polygon id="triangle" points="100,0 0,200 200,200" style="fill:#000;"/>
+				</svg>
+			</div>
+			<div id="tri-05" class="triangle">
+				<svg width="100%" height="100%" viewBox="0 0 200 200" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" >
+					<polygon id="triangle" points="100,0 0,200 200,200" style="fill:#000;"/>
+				</svg>
+			</div>
+			<div id="tri-06" class="triangle">
+				<svg width="100%" height="100%" viewBox="0 0 200 200" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" >
+					<polygon id="triangle" points="100,0 0,200 200,200" style="fill:#000;"/>
+				</svg>
+			</div>
+			<div id="tri-07" class="triangle">
+				<svg width="100%" height="100%" viewBox="0 0 200 200" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" >
+					<polygon id="triangle" points="100,0 0,200 200,200" style="fill:#000;"/>
+				</svg>
+			</div>	
+		<?php }	?>
+		<div class="title">
+			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+			<p><?php echo get_post_meta($post->ID, "meta-description", true) ?></p>
+		</div>
+</header><!-- #masthead -->
