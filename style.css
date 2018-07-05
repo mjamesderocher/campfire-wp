@@ -510,13 +510,15 @@ a:hover, a:active {
 .title h1 {
   font-size: 4rem;
   margin: 0;
+  text-shadow: 2px 2px 2px rgba(36, 31, 22, .5);
+  line-height: 1;
 }
 .title p {
   margin: 0;
   font-size: 2rem;
 }
 .hero .site-branding {
-  grid-column: gutter-left-inside / span 3;
+  grid-column: gutter-left-inside / span 4;
   grid-row: gutter-top-inside / span 3;
 }
 .site-header.hero {
@@ -525,7 +527,7 @@ a:hover, a:active {
   background: linear-gradient(to bottom, rgba(255, 244, 220, .9) 0%, rgba(255, 244, 220, 0) 30%, rgba(255, 244, 220, 0) 100%);
 }
 .hero .title {
-  grid-column: 3 / 12;
+  grid-column: gutter-left-inside / gutter-right-inside;
   grid-row: 6;
   color: #fff;
 }
@@ -588,15 +590,23 @@ a:hover, a:active {
   fill: rgba(221, 151, 17, .7) !important;
 }
 #tri-07.triangle {
-  grid-column: 10 / 16;
+  grid-column: 11 / 16;
   grid-row: 5 / gutter-bottom-outside;
 }
 #tri-07.triangle polygon {
+  fill: rgba(24, 108, 136, .7) !important;
+}
+#tri-08.triangle {
+  grid-column: 11 / 16;
+  grid-row: 5 / gutter-bottom-outside;
+}
+#tri-08.triangle polygon {
   fill: rgba(77, 144, 99, .7) !important;
 }
 .main-navigation {
   grid-row: gutter-top-inside;
-  grid-column: 7 / gutter-right-inside;
+  grid-column: 6 / gutter-right-inside;
+  z-index: 100;
 }
 .main-navigation ul {
   width: 100%;
@@ -604,9 +614,10 @@ a:hover, a:active {
   list-style: none;
   margin: 0;
   padding-left: 0;
-  grid-template-columns: repeat(auto-fit, minmax(3rem, max-content));
+  grid-template-columns: repeat(auto-fit, minmax(min-content, 6rem));
   justify-content: end;
   grid-column-gap: 1rem;
+  text-align: center;
 }
 .main-navigation ul ul {
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
@@ -636,6 +647,22 @@ a:hover, a:active {
   font-size: 1.4rem;
   font-weight: bold;
 }
+.main-navigation a:after {
+  display: block;
+  content: '';
+  border-bottom: solid 3px #dd9711;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+}
+.main-navigation a:hover:after {
+  transform: scaleX(1);
+}
+.main-navigation .current_page_item > a:after, .main-navigation .current-menu-item > a:after, .main-navigation .current_page_ancestor > a:after, .main-navigation .current-menu-ancestor > a:after {
+  display: block;
+  content: '';
+  border-bottom: solid 3px #241f16;
+  transform: scaleX(1);
+}
 .site-main .comment-navigation, .site-main .posts-navigation, .site-main .post-navigation {
   margin: 0 0 1.5em;
   overflow: hidden;
@@ -648,6 +675,55 @@ a:hover, a:active {
   float: right;
   text-align: right;
   width: 50%;
+}
+@media screen and (max-width: 750px) {
+  .hero .site-branding {
+    grid-column: gutter-left-inside / gutter-right-inside;
+    text-align: center;
+  }
+  .hero .main-navigation {
+    grid-row: 7;
+    grid-column: gutter-left-inside / gutter-right-inside;
+  }
+  .hero .main-navigation ul {
+    justify-content: center;
+  }
+  .main-navigation a {
+    color: #fff;
+  }
+  .hero .title {
+    grid-row: 5;
+    grid-column: gutter-left-inside / gutter-right-inside;
+    text-align: center;
+  }
+  #tri-01.triangle {
+    grid-row: 3 / gutter-bottom-outside;
+  }
+  #tri-02.triangle {
+    grid-column: 1 / 6;
+    grid-row: 5 / gutter-bottom-outside;
+  }
+  #tri-03.triangle {
+    grid-column: 1 / 10;
+  }
+  #tri-05.triangle {
+    grid-column: 6 / 16;
+    grid-row: 5 / gutter-bottom-outside;
+  }
+  #tri-06.triangle {
+    grid-column: 10 / 16;
+    grid-row: 3 / gutter-bottom-outside;
+  }
+  #tri-07.triangle {
+    display: none;
+  }
+  #tri-08.triangle {
+    grid-column: 12 / 16;
+    grid-row: 4 / gutter-bottom-outside;
+  }
+}
+.site-footer {
+  text-align: center;
 }
 /*--------------------------------------------------------------
  # Accessibility
@@ -740,6 +816,48 @@ a:hover, a:active {
 }
 .page-links {
   margin: 0 0 1.5em;
+}
+.entry-content > * {
+  max-width: 60rem;
+  margin: 0 auto;
+}
+.entry-content > .swinging-gallery {
+  max-width: 100%;
+}
+h2 {
+  font-size: 4rem;
+  line-height: 1;
+  text-align: center;
+  padding-bottom: 4rem;
+  padding-top: 4rem;
+  margin-top: 2rem;
+}
+.swinging-gallery h2 {
+  font-size: 2.5rem;
+  padding: 0;
+  margin: 0;
+}
+.entry-content > p {
+  font-size: 2rem;
+  text-align: center;
+  line-height: 1.2;
+  margin-bottom: 4rem;
+}
+.swinging-gallery p {
+  font-size: 1.8rem;
+  text-align: center;
+  color: #fff !important;
+  line-height: 1.2;
+}
+.missouri {
+  background-image: url('https://mjamesderocher.design/wp-content/uploads/2018/06/Missouri.svg');
+  background-position: center left;
+  background-repeat: no-repeat;
+}
+.compass {
+  background-image: url('https://mjamesderocher.design/wp-content/uploads/2018/06/compass.svg');
+  background-position: center left;
+  background-repeat: no-repeat;
 }
 /*--------------------------------------------------------------
  ## Comments

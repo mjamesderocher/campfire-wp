@@ -38,6 +38,8 @@
 	h1 {
 		font-size: 4rem;
 		margin: 0;
+		text-shadow: 2px 2px 2px rgba($color__neutral-dark, .5);
+		line-height: 1;
 	}
 	p {
 		margin: 0;
@@ -45,7 +47,7 @@
 	}
 }
 .hero .site-branding {
-	grid-column: gutter-left-inside unquote("/") span 3;
+	grid-column: gutter-left-inside unquote("/") span 4;
 	grid-row: gutter-top-inside unquote("/") span 3;
 }
 
@@ -63,7 +65,7 @@
 }
 
 .hero .title {
-	grid-column: 3 unquote("/") 12;
+	grid-column: gutter-left-inside unquote("/") gutter-right-inside;
 	grid-row: 6;
 	color: #fff;
 }
@@ -127,7 +129,14 @@
 	}
 }
 #tri-07.triangle {
-	grid-column: 10 unquote("/") 16;
+	grid-column: 11 unquote("/") 16;
+	grid-row: 5 unquote("/") gutter-bottom-outside;
+	polygon {
+		fill: rgba($color__accent-one, .7) !important;
+	}
+}
+#tri-08.triangle {
+	grid-column: 11 unquote("/") 16;
 	grid-row: 5 unquote("/") gutter-bottom-outside;
 	polygon {
 		fill: rgba($color__accent-four, .7) !important;
@@ -136,16 +145,18 @@
 
 .main-navigation {
 	grid-row: gutter-top-inside;
-	grid-column: 7 unquote("/") gutter-right-inside;
+	grid-column: 6 unquote("/") gutter-right-inside;
+	z-index: 100;
 	ul {
 		width: 100%;
 		display: grid;
 		list-style: none;
 		margin: 0;
 		padding-left: 0;
-		grid-template-columns: repeat(auto-fit, minmax(3rem,max-content));
+		grid-template-columns: repeat(auto-fit, minmax(min-content, 6rem));
 		justify-content: end;
 		grid-column-gap: 1rem;
+		text-align: center;
 		ul {
 			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
 			float: left;
@@ -169,14 +180,6 @@
 			a {
 				width: 200px;
 			}
-
-			:hover > a,
-			.focus > a {
-			}
-
-			a:hover,
-			a.focus {
-			}
 		}
 
 		li:hover > ul,
@@ -198,11 +201,23 @@
     font-size: 1.4rem;
     font-weight: bold;
 	}
+	a:after {
+		display:block;
+		content: '';
+		border-bottom: solid 3px $color__accent-three;  
+		transform: scaleX(0);  
+		transition: transform 250ms ease-in-out;
+	}
+	a:hover:after { transform: scaleX(1); }
 
-	.current_page_item > a,
-	.current-menu-item > a,
-	.current_page_ancestor > a,
-	.current-menu-ancestor > a {
+	.current_page_item > a:after,
+	.current-menu-item > a:after,
+	.current_page_ancestor > a:after,
+	.current-menu-ancestor > a:after {
+		display:block;
+		content: '';
+		border-bottom: solid 3px $color__neutral-dark;  
+		transform: scaleX(1);  
 	}
 }
 
@@ -222,4 +237,55 @@
 		text-align: right;
 		width: 50%;
 	}
+}
+
+@media screen and (max-width: 750px) {
+	.hero .site-branding {
+		grid-column: gutter-left-inside unquote("/") gutter-right-inside;
+		text-align: center;
+	}
+	.hero .main-navigation {
+    grid-row: 7;
+		grid-column: gutter-left-inside unquote("/") gutter-right-inside;
+		ul {
+			justify-content: center;
+		}
+	}
+	.main-navigation a {
+		color: $color__neutral-light;
+	}
+	.hero .title {
+		grid-row: 5;
+		grid-column: gutter-left-inside unquote("/") gutter-right-inside;
+		text-align: center;
+	}
+	#tri-01.triangle {
+    grid-row: 3 unquote("/") gutter-bottom-outside;
+	}
+	#tri-02.triangle {
+    grid-column: 1 unquote("/") 6;
+    grid-row: 5 unquote("/") gutter-bottom-outside;
+	}
+	#tri-03.triangle {
+    grid-column: 1 unquote("/") 10;
+	}
+	#tri-05.triangle {
+    grid-column: 6 unquote("/") 16;
+    grid-row: 5 unquote("/") gutter-bottom-outside;
+	}
+	#tri-06.triangle {
+    grid-column: 10 unquote("/") 16;
+    grid-row: 3 unquote("/") gutter-bottom-outside;
+	}
+	#tri-07.triangle {
+    display: none;
+	}
+	#tri-08.triangle {
+    grid-column: 12 unquote("/") 16;
+    grid-row: 4 unquote("/") gutter-bottom-outside;
+	}
+}
+
+.site-footer {
+	text-align: center;
 }

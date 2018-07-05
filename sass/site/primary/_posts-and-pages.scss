@@ -19,3 +19,51 @@
 .page-links {
 	margin: 0 0 1.5em;
 }
+.entry-content > * {
+  max-width: 60rem;
+  margin: 0 auto;
+}
+.entry-content > .swinging-gallery {
+	max-width: 100%;
+}
+
+h2 {
+	font-size: 4rem;
+	line-height: 1;
+	text-align: center;
+	padding-bottom: 4rem;
+	padding-top: 4rem;
+	margin-top: 2rem;
+}
+
+.swinging-gallery h2 {
+	font-size: 2.5rem;
+	padding: 0;
+	margin: 0;
+}
+
+.entry-content > p {
+	font-size: 2rem;
+	text-align: center;
+	line-height: 1.2;
+	margin-bottom: 4rem;
+}
+
+.swinging-gallery p {
+	font-size: 1.8rem;
+	text-align: center;
+	color: #fff !important;
+	line-height: 1.2;
+}
+
+.missouri {
+	background-image: url('https://mjamesderocher.design/wp-content/uploads/2018/06/Missouri.svg');
+	background-position: center left;
+	background-repeat: no-repeat;
+}
+
+.compass {
+	background-image: url('https://mjamesderocher.design/wp-content/uploads/2018/06/compass.svg');
+	background-position: center left;
+	background-repeat: no-repeat;
+}

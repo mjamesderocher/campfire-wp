@@ -65,8 +65,8 @@
 		<?php if ( has_post_thumbnail() ) { ?>
 			<?php campfire_post_thumbnail(); ?>
 			<div id="tri-01" class="triangle">
-				<svg width="100%" height="100%" viewBox="0 0 200 200" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" >
-					<polygon id="triangle" points="100,0 0,200 200,200" style="fill:#000;"/>
+				<svg width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 100 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/">
+					<polygon id="triangle" points="0,0 0,200 100,200" style="fill:#000;"/>
 				</svg>
 			</div>
 			<div id="tri-02" class="triangle">
@@ -98,7 +98,12 @@
 				<svg width="100%" height="100%" viewBox="0 0 200 200" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" >
 					<polygon id="triangle" points="100,0 0,200 200,200" style="fill:#000;"/>
 				</svg>
-			</div>	
+			</div>
+			<div id="tri-08" class="triangle">
+				<svg width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 100 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/">
+					<polygon id="triangle" points="100,0 0,200 100,200" style="fill:#000;"/>
+				</svg>
+			</div>
 		<?php }	?>
 		<div class="title">
 			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>

@@ -42,6 +42,16 @@ if ( ! function_exists( 'campfire_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 
+		/**
+		* Add support for Gutenberg.
+		*
+		* @link https://wordpress.org/gutenberg/handbook/reference/theme-support/
+		*/
+		add_theme_support( 'gutenberg', array(
+			// Theme supports wide images, galleries and videos.
+			'wide-images' => true,
+		) );
+
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'campfire' ),
@@ -184,7 +194,7 @@ function your_theme_customizer_setting($wp_customize) {
 function campfire_scripts() {
 	wp_enqueue_style( 'campfire-style', get_stylesheet_uri() );
 
-	wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Alegreya+SC:400,700|Alegreya+Sans:700', false );
+	wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Alegreya+SC:700|Alegreya+Sans:400,700', false );
 
 	wp_enqueue_script( 'campfire-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
